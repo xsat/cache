@@ -1,7 +1,8 @@
 {
   "name": "xsat/cache",
   "require": {
-    "php": "^7.4"
+    "php": "^7.4",
+    "ext-json": "^7.4"
   },
   "autoload": {
     "psr-4": {
