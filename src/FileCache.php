@@ -13,9 +13,9 @@ use InvalidArgumentException;
 class FileCache implements CacheInterface
 {
     /**
-     * @var string
+     * @var string|null
      */
-    private string $storage;
+    private ?string $storage;
 
     /**
      * FileCache constructor.
@@ -26,9 +26,9 @@ class FileCache implements CacheInterface
      */
     public function __construct(string $storage)
     {
-        $this->storage = realpath($storage);
+        $this->storage = realpath($storage) ?: null;
 
-        if (!is_dir($this->storage)) {
+        if ($this->storage === null || !is_dir($this->storage)) {
             throw new InvalidArgumentException('Storage is not directory');
         }
     }
